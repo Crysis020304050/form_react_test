@@ -8,19 +8,19 @@ class Input extends Component {
   constructor (props, context) {
     super(props, context);
     this.state = {
-      valid: true,
+      isInvalid: false,
     };
   }
 
   onChange = (e) => {
     if (this.props.pattern.test(e.target.value) || e.target.value === '') {
       this.setState({
-                      valid: true,
+                      isInvalid: false,
                     });
       this.props.handleChange(e);
     } else {
       this.setState({
-                      valid: false,
+                      isInvalid: true,
                     });
       this.props.handleChange(e);
     }
@@ -28,7 +28,7 @@ class Input extends Component {
 
   render () {
     return (
-      <input className={classNames({ [styles.invalid]: !this.state.valid })}
+      <input className={classNames({ [styles.invalid]: this.state.isInvalid })}
              type={this.props.isPassword ? 'password' : 'text'}
              value={this.props.value} onChange={this.onChange}
              placeholder={this.props.placeholder} name={this.props.name}/>

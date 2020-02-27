@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { loadJson } from '../../utils/loadJson';
 import Input from '../Input';
 import {NAME_PATTERN, EMAIL_PATTERN, PASSWORD_PATTERN} from '../../constants';
+import styles from './SingUpForm.module.css';
 
 class SingUpForm extends Component {
 
@@ -48,7 +49,7 @@ class SingUpForm extends Component {
   render () {
     const { data: {firstName, lastName, email, password } } = this.state;
     return (
-      <form onSubmit={this.submitHandler}>
+      <form className={styles.container} onSubmit={this.submitHandler}>
         <Input pattern={NAME_PATTERN} value={firstName} handleChange={this.handleChange} name="firstName" placeholder="Name"/>
         <Input pattern={NAME_PATTERN} value={lastName} handleChange={this.handleChange} name="lastName" placeholder="Last name"/>
         <Input pattern={EMAIL_PATTERN} value={email} handleChange={this.handleChange} name="email" placeholder="Email"/>
