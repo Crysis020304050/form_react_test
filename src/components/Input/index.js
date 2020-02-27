@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Input.module.css';
+import {onChange} from "../../utils/checkUserInputValue";
 
 class Input extends Component {
 
@@ -11,25 +12,12 @@ class Input extends Component {
       isInvalid: false,
     };
   }
-
-  onChange = (e) => {
-    if (this.props.pattern.test(e.target.value) || e.target.value === '') {
-      this.setState({
-                      isInvalid: false,
-                    });
-      this.props.handleChange(e);
-    } else {
-      this.setState({
-                      isInvalid: true,
-                    });
-      this.props.handleChange(e);
-    }
-  };
+  onChange = onChange.bind(this);
 
   render () {
     return (
       <input className={classNames({ [styles.invalid]: this.state.isInvalid })}
-             type={this.props.isPassword ? 'password' : 'text'}
+             type='text'
              value={this.props.value} onChange={this.onChange}
              placeholder={this.props.placeholder} name={this.props.name}/>
     );
@@ -44,6 +32,4 @@ Input.propTypes = {
   handleChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
-  isPassword: PropTypes.bool,
-
 };

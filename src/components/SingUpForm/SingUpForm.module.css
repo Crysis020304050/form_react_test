@@ -1,6 +1,17 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 300px;
+    min-height: 150px;
+    height: 100%;
+}
+
+.container > label {
+    display: flex;
+    align-items: center;
+}
+
+.container > label > input {
+    flex-grow: 1;
 }
