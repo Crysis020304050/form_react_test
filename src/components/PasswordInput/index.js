@@ -14,12 +14,10 @@ class PasswordInput extends Component {
             isHidden: true,
         }
     }
-
     onChange = onChange.bind(this);
 
     render() {
         const {isHidden} = this.state;
-
         return (
             <label>
                 <input type={isHidden
@@ -40,7 +38,6 @@ class PasswordInput extends Component {
                     ? mdiEyeOutline
                     : mdiEyeOffOutline} size={1}
                 />
-
             </label>
         );
     }
